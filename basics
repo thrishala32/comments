@@ -1,0 +1,21 @@
+import praw
+import config
+
+reddit = praw.Reddit(username = config.username,
+            password = config.password,
+            client_id = config.client_id,
+            client_secret = config.client_secret,
+            user_agent = "serenas comment responder v0.1")
+
+subreddit = reddit.subreddit('Periods')
+#Periods is an example of the subreddit i choose it can be anything.
+
+new_Periods = subreddit.new(limit=1)
+#limit is the no of posts
+for submission in new_Periods:
+    print(submission.title)
+
+
+for new_comment in submission.comments:
+    print(new_comment.body)
+    print(new_comment.score)
